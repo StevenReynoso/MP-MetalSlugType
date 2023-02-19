@@ -35,14 +35,10 @@ public class PlayerAimWeapon : NetworkBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
         // If the player can fire and the left mouse button is pressed, fire a shot
-        if (canFire && Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && canFire)
         {
             canFire = false;
-
-            // Pass the mouse position to ShotsFiredServerRpc
-            Vector3 direction = mousePos - bulletTransform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            ShotsFiredServerRpc(angle);
+            ShotsFiredServerRpc(bulletTransform.position, transform.rotation);
         }
 
         // If the player can't fire, increment the timer and reset canFire if necessary
@@ -58,19 +54,15 @@ public class PlayerAimWeapon : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void ShotsFiredServerRpc(float rotation)
+    private void ShotsFiredServerRpc(Vector3 position, Quaternion rotation)
     {
-        ShotsFiredClientRpc(rotation);
+        ShotsFiredClientRpc(position, rotation);
     }
 
     [ClientRpc]
-    private void ShotsFiredClientRpc(float rotation)
+    private void ShotsFiredClientRpc(Vector3 position, Quaternion rotation)
     {
-        // Create a new bullet and set its rotation based on the passed in rotation
-        GameObject bulletCopy = Instantiate(bullet, bulletTransform.position, Quaternion.identity);
-        bulletCopy.transform.rotation = Quaternion.Euler(0f, 0f, rotation);
-
-        // Destroy the bullet after a set amount of time
+        GameObject bulletCopy = Instantiate(bullet, position, rotation);
         Destroy(bulletCopy, destroyBullet);
     }
 
