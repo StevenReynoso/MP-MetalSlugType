@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5488423736772245573}
   - component: {fileID: 7784153640472171253}
   - component: {fileID: 6963916685308439399}
-  - component: {fileID: 8184646183095824722}
+  - component: {fileID: -3002422656926362325}
   m_Layer: 9
   m_Name: Player_Bullet
   m_TagString: Bullet
@@ -138,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c73d9f5c3febdc4ea573f019f80d95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousePos: {x: 5, y: 5, z: 5}
+  mainCam: {fileID: 0}
   force: 18
   damage: 5
 --- !u!114 &6963916685308439399
@@ -156,7 +158,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &8184646183095824722
+--- !u!114 &-3002422656926362325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,7 +167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7094918058586987859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1

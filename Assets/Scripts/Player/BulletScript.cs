@@ -9,13 +9,13 @@ public class BulletScript : NetworkBehaviour
 {
 
     private Vector3 mousePos;
+    
     private Camera mainCam;
     private Rigidbody2D rb;
     public float force;
     public int damage;
 
     
-    private Quaternion _syncRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,7 @@ public class BulletScript : NetworkBehaviour
         float rot = Mathf.Atan2(rotation.y, rotation.x) + Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -58,5 +59,20 @@ public class BulletScript : NetworkBehaviour
         {
             SetRotationClientRpc(transform.rotation);
         }
+        
+
+
+        if (IsClient)
+        {
+            mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            UpdatePositionServerRpc(mousePos.x, mousePos.y);
+        }
+
+    }
+
+    [ServerRpc]
+    private void UpdatePositionServerRpc(float x, float y)
+    {
+        mousePos = new Vector3(x, y, transform.position.z);
     }
 }
