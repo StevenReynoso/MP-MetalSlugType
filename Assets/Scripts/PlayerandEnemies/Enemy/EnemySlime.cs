@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Multiplayer.Samples.Utilities;
+using Unity.Netcode;
 using UnityEngine;
 
-public class EnemySlime : MonoBehaviour
+public class EnemySlime : NetworkBehaviour
 {
     [SerializeField]
     private GameObject slimeShot;
@@ -14,6 +17,8 @@ public class EnemySlime : MonoBehaviour
     private float minShootWaitTime = 1f, maxShootWaitTime = 3f;
 
     [SerializeField]
+    private GameObject[] players;
+    [SerializeField]
     private float detectionRange = 10f;
 
     private float waitTime;
@@ -24,19 +29,15 @@ public class EnemySlime : MonoBehaviour
     private void Start()
     {
         waitTime = Time.time + Random.Range(minShootWaitTime, maxShootWaitTime);
+        players = GameObject.FindGameObjectsWithTag("Player");
 
-        // Find all player transforms and add them to the list
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject playerObject in playerObjects)
-        {
-            playerTransforms.Add(playerObject.transform);
-        }
     }
     
 
     private void Update()
     {
         
+        LoadedLevel();
 
         // Find the closest player transform
         Transform closestPlayerTransform = null;
@@ -70,5 +71,20 @@ public class EnemySlime : MonoBehaviour
         GameObject tempShot;
         tempShot = Instantiate(slimeShot, bulletSpawnPos.position, Quaternion.identity);
         Object.Destroy(tempShot, destroyObject);
+
     }
+
+
+    private void LoadedLevel()
+    {
+        if (playerTransforms.Count != players.Count())
+        {
+            GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject playerObject in playerObjects)
+            {
+                playerTransforms.Add(playerObject.transform);
+            }
+        }
+    }
+
 }

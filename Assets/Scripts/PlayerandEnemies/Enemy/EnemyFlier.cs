@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnemyFlier : MonoBehaviour
+public class EnemyFlier : NetworkBehaviour
 {
     [SerializeField]
     private GameObject poisonShot;
+    public int _damage;
 
     [SerializeField]
     private Transform bulletSpawnPos;
@@ -67,6 +69,9 @@ public class EnemyFlier : MonoBehaviour
         GameObject tempShot;
         tempShot = Instantiate(poisonShot, bulletSpawnPos.position, Quaternion.identity);
         Object.Destroy(tempShot, destroyObject);
+
+
+
     }
 
     private void LoadedLevel()
@@ -79,11 +84,6 @@ public class EnemyFlier : MonoBehaviour
                 playerTransforms.Add(playerObject.transform);
             }
         }
-
-
     }
-
-  
-
 
 }

@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 9052196691251820619}
   - component: {fileID: -4286014678651585850}
   - component: {fileID: 5488423736772245573}
+  - component: {fileID: -3438933774148174273}
   - component: {fileID: 7784153640472171253}
   - component: {fileID: 6963916685308439399}
   - component: {fileID: -3002422656926362325}
+  - component: {fileID: 1822713986}
   m_Layer: 9
   m_Name: Player_Bullet
   m_TagString: Bullet
@@ -126,6 +128,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.235
+--- !u!114 &-3438933774148174273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094918058586987859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b4b6cf0e1afdd448d7f608cb9c5393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 5
 --- !u!114 &7784153640472171253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,10 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c73d9f5c3febdc4ea573f019f80d95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePos: {x: 5, y: 5, z: 5}
-  mainCam: {fileID: 0}
-  force: 18
-  damage: 5
+  _speed: 14
+  _damage: 1
 --- !u!114 &6963916685308439399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,15 +185,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SyncPositionX: 1
   SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 1
-  SyncRotAngleY: 1
-  SyncRotAngleZ: 1
-  SyncScaleX: 1
-  SyncScaleY: 1
-  SyncScaleZ: 1
+  SyncPositionZ: 0
+  SyncRotAngleX: 0
+  SyncRotAngleY: 0
+  SyncRotAngleZ: 0
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
   PositionThreshold: 0.001
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
+--- !u!114 &1822713986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094918058586987859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

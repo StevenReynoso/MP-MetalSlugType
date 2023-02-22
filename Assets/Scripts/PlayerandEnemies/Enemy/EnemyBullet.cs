@@ -41,4 +41,5 @@ public class EnemyBullet : NetworkBehaviour
             SetRotationClientRpc(transform.rotation);
         }
     }
+
 }

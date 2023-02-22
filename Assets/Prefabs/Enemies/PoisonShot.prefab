@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7315002187577175275}
   - component: {fileID: 7315002187577175272}
+  - component: {fileID: 7321370105749058716}
   - component: {fileID: 2809130255905446926}
   - component: {fileID: 6565187029778537320}
   - component: {fileID: 1093550702153115361}
+  - component: {fileID: 215316577}
   m_Layer: 10
   m_Name: PoisonShot
   m_TagString: EnemyBullet
@@ -87,6 +89,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &7321370105749058716
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315002187577175273}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.46499997
 --- !u!50 &2809130255905446926
 Rigidbody2D:
   serializedVersion: 4
@@ -138,3 +156,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   force: 10
+--- !u!114 &215316577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315002187577175273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afdadfc10e384d2429f71a40194eed0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 2
